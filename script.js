@@ -114,7 +114,7 @@ var taro = new Vue({
             if(a.par < b.par) return 1;
             return 0;
         });
-        this.parsent1 = playersort[0].par
+        this.parsent0 = playersort[0].par
         this.parsent1 = playersort[1].par
         this.parsent2 = playersort[2].par
         this.parsent3 = playersort[3].par

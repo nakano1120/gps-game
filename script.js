@@ -5,6 +5,9 @@ let long1 = 0
 let loops = 0.0
 let goal = 0
 let time = 0
+let count = 0
+let GPSlati=[]
+let GPSlong=[]
 let player=[
   {id:"1",name:"<span class='red'>あなた大</span>",target:0,par:0},
   {id:"2",name:"体操大",target:0,par:0},
@@ -28,7 +31,7 @@ var taro = new Vue({
       parsent6:0,
       parsent7:0,
       parsent8:0,
-      todoname:"マラソン大会",
+      todoname:"",
       nowtime:"00:00:00",
       stationtimer:null
     },
@@ -74,7 +77,7 @@ var taro = new Vue({
         return value;
       },
       timer: function(){
-        if(document.getElementById("time").value<1 || document.getElementById("sec").value == ""){
+        if(document.getElementById("time").value>0 || document.getElementById("sec").value > 0 || document.getElementById("time").value < 999 || document.getElementById("sec").value < 999){
           alert("時間が不正です")
           return
         }
@@ -84,7 +87,6 @@ var taro = new Vue({
         document.getElementById("form1").style.display = "none";
         goal = document.getElementById("todo").value
         departuretime = parseInt(document.getElementById("time").value * 60) + parseInt(document.getElementById("sec").value)
-        this.todoname = "マラソン大会(" + document.getElementById("todo").value + "m)"
         for( let i=1 ; i<8 ; i++){
           player[i].target = ((parseInt(departuretime))+ Math.floor( Math.random() * parseInt(departuretime/2) ) - parseInt(departuretime/4)) * 1000
         }

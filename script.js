@@ -104,7 +104,7 @@ var taro = new Vue({
         document.getElementById("nowtime").innerHTML=""+hour+":"+min2+":"+secsec+"."+point2;
         for( let i=1 ; i<8 ; i++){ 
             player[i].target += (Math.floor( Math.random() * 1000 ) - 500);
-            player[i].par = (Math.floor(diftime / player[i].target * 100000) / goal)
+            player[i].par = Math.floor((Math.floor((diftime / player[i].target)* 10000) / 100) * (goal/100))
             if (player[i].par > goal){
               player[i].par == goal
             }
@@ -114,6 +114,7 @@ var taro = new Vue({
             if(a.par < b.par) return 1;
             return 0;
         });
+        this.parsent1 = playersort[0].par
         this.parsent1 = playersort[1].par
         this.parsent2 = playersort[2].par
         this.parsent3 = playersort[3].par

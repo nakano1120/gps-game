@@ -1,7 +1,7 @@
-let latinow
-let longnow
-let lati1
-let long1
+let latinow = 0
+let longnow = 0
+let lati1 = 0
+let long1 = 0
 var taro = new Vue({
     el: "#app",
     data: {
@@ -32,8 +32,8 @@ var taro = new Vue({
                 lati1 = position.coords.latitude;
                 long1 = position.coords.longitude;
               }else{
-                  lati1 = this.latinow;
-                  long1 = this.longnow;
+                  lati1 = latinow;
+                  long1 = longnow;
               }
           }
         )

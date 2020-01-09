@@ -63,9 +63,6 @@ var taro = new Vue({
               latinow = position.coords.latitude;
               longnow = position.coords.longitude;
 
-          },function(){
-            lati1 = latinow;
-            long1 = longnow;
           }
         )
       },

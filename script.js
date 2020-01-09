@@ -2,7 +2,7 @@ let latinow = 0
 let longnow = 0
 let lati1 = 0
 let long1 = 0
-let loops = 0
+let loops = 0.0
 var taro = new Vue({
     el: "#app",
     data: {
@@ -22,7 +22,8 @@ var taro = new Vue({
       },
       plusdistance: function(){
         this.getposition();
-        loops += 0.0009
+        loops = Math.round(( loops + 0.0009 ) * 10000 ) / 10000
+        console.log(loops)
         var plusdis = Math.floor(this.distance(lati1,long1,latinow,longnow) * 1000)
         console.log(lati1+","+long1+","+latinow+","+longnow)
         console.log(plusdis)
@@ -35,14 +36,14 @@ var taro = new Vue({
                 lati1 = position.coords.latitude;
                 long1 = position.coords.longitude;
               }else{
-                  lati1 = latinow;
-                  long1 = longnow;
+                lati1 = latinow;
+                long1 = longnow;
               }
-              latinow = position.coords.latitude +parseInt(loops);
+              latinow = position.coords.latitude + loops;
               longnow = position.coords.longitude;
 
           }
         )
-      },
+      }
     }
 })

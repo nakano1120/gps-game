@@ -77,7 +77,7 @@ var taro = new Vue({
         return value;
       },
       timer: function(){
-        if(document.getElementById("time").value<0 || document.getElementById("sec").value < 1 || document.getElementById("time").value > 999 || document.getElementById("sec").value > 59){
+        if(document.getElementById("time").value < 1 || document.getElementById("sec").value < 0 || document.getElementById("time").value > 999 || document.getElementById("sec").value > 59){
           alert("時間が不正です")
           return
         }else if(document.getElementById("todo".value<0) || document.getElementById("todo".value<1000000)){

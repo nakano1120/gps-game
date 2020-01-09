@@ -49,7 +49,6 @@ var taro = new Vue({
         }else if(plusdis == NaN){
           plusdis = 0;
         }
-        console.log(plusdis)
         this.alldis+=plusdis;
       },
       getposition: function(){
@@ -88,7 +87,6 @@ var taro = new Vue({
         this.todoname = "マラソン大会(" + document.getElementById("todo").value + "m)"
         for( let i=1 ; i<8 ; i++){
           player[i].target = ((parseInt(departuretime))+ Math.floor( Math.random() * parseInt(departuretime/2) ) - parseInt(departuretime/4)) * 1000
-          console.log(player[i].target)
         }
         this.stationtimer = setInterval(this.timermain.bind(this), 300);
       },

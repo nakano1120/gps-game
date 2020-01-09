@@ -1,11 +1,11 @@
+let latinow
+let longnow
+let lati1
+let long1
 var taro = new Vue({
     el: "#app",
     data: {
       timerOn: false,
-      lati1:0,
-      long1:0,
-      latinow:0,
-      longnow:0,
       alldis:0
     },
     methods:{
@@ -18,26 +18,25 @@ var taro = new Vue({
       },
       plusdistance: function(){
         this.getposition();
-        var plusdis = this.distance(this.lati1,this.long1,this.latinow,this.longnow)
-        alert(this.lati1+","+this.long1+","+this.latinow+","+this.longnow)
-        alert(plusdis)
+        var plusdis = Math.floor(this.distance(lati1,long1,latinow,longnow) * 1000)
+        console.log(lati1+","+long1+","+latinow+","+longnow)
+        console.log(plusdis)
         this.alldis+=plusdis;
       },
       getposition: function(){
         navigator.geolocation.getCurrentPosition(
           function( position ){
-              if(this.lati1 == 0 || this.long1 == 0 ){
-                this.lati1=position.coords.latitude;
-                this.long1=position.coords.longitude;
+              latinow = position.coords.latitude;
+              longnow = position.coords.longitude;
+              if(lati1 == 0 || long1 == 0 ){
+                lati1 = position.coords.latitude;
+                long1 = position.coords.longitude;
               }else{
-                this.lati1=this.latinow;
-                this.long1=this.longnow;
+                  lati1 = this.latinow;
+                  long1 = this.longnow;
               }
-              this.latinow=position.coords.latitude;
-              this.longnow=position.coords.longitude;
           }
         )
-        return
-      }
+      },
     }
 })

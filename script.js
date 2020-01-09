@@ -13,7 +13,7 @@ let player=[
   {id:"5",name:"城山大",target:0,par:0},
   {id:"6",name:"六浦大",target:0,par:0},
   {id:"7",name:"七海大",target:0,par:0},
-  {id:"8",name:"西洋大学",target:0,par:0}
+  {id:"8",name:"西洋大",target:0,par:0}
 ]
 var taro = new Vue({
     el: "#app",
@@ -114,14 +114,14 @@ var taro = new Vue({
             if(a.par < b.par) return 1;
             return 0;
         });
-        this.parsent0 = playersort[0].par
-        this.parsent1 = playersort[1].par
-        this.parsent2 = playersort[2].par
-        this.parsent3 = playersort[3].par
-        this.parsent4 = playersort[4].par
-        this.parsent5 = playersort[5].par
-        this.parsent6 = playersort[6].par
-        this.parsent7 = playersort[7].par
+        this.parsent1 = playersort[0].par
+        this.parsent2 = playersort[1].par
+        this.parsent3 = playersort[2].par
+        this.parsent4 = playersort[3].par
+        this.parsent5 = playersort[4].par
+        this.parsent6 = playersort[5].par
+        this.parsent7 = playersort[6].par
+        this.parsent8 = playersort[7].par
         for (let l=1 ; l<9 ; l++){
             document.getElementById("name"+l).innerHTML=playersort[l-1].name
             document.getElementById("pb"+l).style.width=(playersort[l-1].par * 100) / goal+"%"

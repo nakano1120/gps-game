@@ -89,6 +89,7 @@ var taro = new Vue({
       },
       timermain: function(){
         this.plusdistance()
+        player[0].par = this.alldis
         let now = new Date();
         let diftime = (now.getTime() - start.getTime());
         let point = Math.floor(diftime / 100);
@@ -125,6 +126,9 @@ var taro = new Vue({
         for (let l=1 ; l<9 ; l++){
             document.getElementById("name"+l).innerHTML=playersort[l-1].name
             document.getElementById("pb"+l).style.width=(playersort[l-1].par * 100) / goal+"%"
+            if((playersort[l-1].par * 100) / goal > 100 ){
+              document.getElementById("pb"+l).style.width = "100%"
+            }
         }
         if(player[0].par > goal){
             clearInterval(this.stationtimer);

@@ -8,15 +8,86 @@
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <style>
       body{
-        text-align:center;
+          text-align:center;
+      }
 
+      #form1{
+          background-color:#eeeeee;
+      }
+      .Header {
+          position: fixed;	/* ヘッダーを固定する */
+          top: 0;	/* 上部から配置の基準位置を決める */ 
+          left: 0;	/* 左から配置の基準位置を決める */ 
+          width: 100%;	/* ヘッダーの横幅を指定する */
+          height: 40px;	/* ヘッダーの高さを指定する */
+          padding: 10px 0;	/* ヘッダーの余白を指定する(上下左右) */
+          background-color: #ff0000;	/* ヘッダーの背景色を指定する */
+          color: #ffffff;	/* フォントの色を指定する */
+          font-size:150%;
+      }	
+      #app{
+          width: 100%;	/* コンテンツの横幅を指定する */
+          padding:60px 0 0 0;
+          overflow: auto; /* コンテンツの表示を自動に設定（スクロール） */
+      }
+      input#ore{
+          font-size:100%;
+          width:200px;
+          background-color:orange;
+      }
+      input{
+          width:50px;
+      }
+      .ranking{
+          display:inline-block;
+          text-align:left;
+          width:80vw;
+          padding:5px;
+          margin:5px;
+          border:1px solid #000000;
+          background-color:yellow;
+      }
+      .red{
+          color:red;
+      }
+      .place{
+          display:inline-block;
+          position:relative;
+          width:100%;
+          height:100%;
+      }
+      .pb{
+          display:inline-block;
+          background-color:#ff0000;
+          color:#ffffff;
+          width:0px;
+          height:100%;
       }
     </style>
 </head>
-<body style="background-color:#eeeeee;">
+<body>
+    <div class="Header">
+      TaskRacing
+    </div>
     <div id='app'>
-      現在の走行距離： {{ alldis }}m
-      <input type="button" v-on:click="plusdistance">
+      <form id="form1">
+        距離:<input type="number" id="todo">m
+        目標時間:<input type="number" id="time">分<input type="number" id="sec">秒
+        <input type="button" value="開始" v-on:click="timer">
+      </form>
+      <h1 id="todoname"> {{todoname}} </h1>
+      <h2 id="nowtime"> {{nowtime}} </h2>
+      <h2>現在： {{ alldis }}m </h2>
+      <div class="rank">
+        <span class="ranking">1位　<span id="name1">西洋大</span>　<span class="place"><span class="pb" id="pb1">{{parsent1}}m</span></span></span><br>
+        <span class="ranking">2位　<span id="name2">体操大</span>　<span class="place"><span class="pb" id="pb2">{{parsent2}}m</span></span></span><br>
+        <span class="ranking">3位　<span id="name3">大正大</span>　<span class="place"><span class="pb" id="pb3">{{parsent3}}m</span></span></span><br>
+        <span class="ranking">4位　<span id="name4">開拓大</span>　<span class="place"><span class="pb" id="pb4">{{parsent4}}m</span></span></span><br>
+        <span class="ranking">5位　<span id="name5">城山大</span>　<span class="place"><span class="pb" id="pb5">{{parsent5}}m</span></span></span><br>
+        <span class="ranking">6位　<span id="name6">六浦大</span>　<span class="place"><span class="pb" id="pb6">{{parsent6}}m</span></span></span><br>
+        <span class="ranking">7位　<span id="name7">七海大</span>　<span class="place"><span class="pb" id="pb7">{{parsent7}}m</span></span></span><br>
+        <span class="ranking">8位　<span id="name8">あなた大</span>　<span class="place"><span class="pb" id="pb8">{{parsent8}}m</span></span></span><br>
+      </div>
     </div>
     <script src="script.js"></script>
 </body>

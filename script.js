@@ -45,7 +45,7 @@ var taro = new Vue({
         var plusdis = Math.floor(this.distance(lati1,long1,latinow,longnow) * 1000)
         console.log(lati1+","+long1+","+latinow+","+longnow)
         console.log(plusdis)
-        if(plusdis == NaN){
+        if(lati1 == latinow && long1 == longnow){
           plusdis = 0;
         }
         this.alldis+=plusdis;

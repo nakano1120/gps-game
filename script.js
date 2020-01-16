@@ -149,8 +149,6 @@ var taro = new Vue({
         window.open(turl,'_blank');
       },
       botan:function(){
-        let num = document.getElementById("level").selectedIndex;
-        let keisan = String(parseInt(cnt)+parseInt(seito))
         this.openTwitter("Taskracing RUN "+goal+"m走大会で "+hour+"時間"+min2+"分"+secsec+"秒の成績を記録しました！","https://nakano1120.github.io/taskracing_run/index.html","TaskRacing RUN","");    
       }
     }

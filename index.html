@@ -92,6 +92,8 @@
         目標:<input type="number" id="time" value="1">分<input type="number" id="sec" value="0">秒
         <input type="button" value="開始" v-on:click="timer">
       </form>
+      <input type="button" id="sto" value="一時停止" v-on:click="stoptimer"  style="display:none;">
+      <input type="button" id="res" value="再開" v-on:click="restarttimer" style="display:none;">
       <h1 id="todoname"> {{todoname}} </h1>
       <h2 id="nowtime"> {{nowtime}} </h2>
       <h2>現在： {{ alldis }}m </h2>

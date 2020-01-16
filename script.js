@@ -89,6 +89,7 @@ var taro = new Vue({
         }
         start = new Date();
         alert("出発します。")
+        document.getElementById("sto").style.display="inline"
         nowstation = 0
         document.getElementById("form1").style.display = "none";
         goal = document.getElementById("todo").value
@@ -113,7 +114,7 @@ var taro = new Vue({
         secsec = this.addZero(secsec);
         min2 = this.addZero(minmin);
         hour = this.addZero(hour);
-        document.getElementById("nowtime").innerHTML=""+hour+":"+min2+":"+secsec;
+        this.nowtime=""+hour+":"+min2+":"+secsec;
         for( let i=1 ; i<8 ; i++){ 
             player[i].target += (Math.floor( Math.random() * 1000 ) - 500);
             player[i].par = Math.floor((Math.floor((diftime / player[i].target)* 10000) / 100) * (goal/100))
@@ -153,6 +154,17 @@ var taro = new Vue({
       },
       botan:function(){
         this.openTwitter("Taskracing RUN "+goal+"m走大会で "+hour+"時間"+min2+"分"+secsec+"秒の成績を記録しました！","https://nakano1120.github.io/taskracing_run/index.html","TaskRacing RUN");    
+      },
+      stoptimer:function(){
+        clearInterval(this.stationtimer);
+        this.nowtime="一時停止中"
+        document.getElementById("sto").style.display="none"
+        document.getElementById("res").style.display="inline"
+      },
+      restarttimer:function(){
+        this.stationtimer = setInterval(this.timermain.bind(this),1000);
+        document.getElementById("sto").style.display="inline"
+        document.getElementById("res").style.display="none"
       }
     }
 })

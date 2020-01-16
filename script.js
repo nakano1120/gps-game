@@ -93,7 +93,7 @@ var taro = new Vue({
         for( let i=1 ; i<8 ; i++){
           player[i].target = ((parseInt(departuretime))+ Math.floor( Math.random() * parseInt(departuretime/2) ) - parseInt(departuretime/4)) * 1000
         }
-        this.stationtimer = setInterval(this.timermain.bind(this), 300);
+        this.stationtimer = setInterval(this.timermain.bind(this), 1000);
       },
       timermain: function(){
         this.plusdistance()
@@ -110,7 +110,7 @@ var taro = new Vue({
         secsec = this.addZero(secsec);
         min2 = this.addZero(minmin);
         hour = this.addZero(hour);
-        document.getElementById("nowtime").innerHTML=""+hour+":"+min2+":"+secsec+"."+point2;
+        document.getElementById("nowtime").innerHTML=""+hour+":"+min2+":"+secsec;
         for( let i=1 ; i<8 ; i++){ 
             player[i].target += (Math.floor( Math.random() * 1000 ) - 500);
             player[i].par = Math.floor((Math.floor((diftime / player[i].target)* 10000) / 100) * (goal/100))
@@ -140,8 +140,18 @@ var taro = new Vue({
         }
         if(player[0].par > goal){
             clearInterval(this.stationtimer);
-            alert("終了です。")
+            alert("終了です。お疲れ様でした。")
+            document.getElementById("tweet").style.display = "inline-block";
         }
+      },
+      openTwitter:function(text,url,hash,account){
+        let turl = "https://twitter.com/intent/tweet?text="+text+"&url="+url+"&hashtags="+hash+"&via="+account;
+        window.open(turl,'_blank');
+      },
+      botan:function(){
+        let num = document.getElementById("level").selectedIndex;
+        let keisan = String(parseInt(cnt)+parseInt(seito))
+        this.openTwitter("Taskracing RUN "+goal+"m走大会で "+hour+"時間"+min2+"分"+secsec+"秒の成績を記録しました！","https://nakano1120.github.io/taskracing_run/index.html","TaskRacing RUN","");    
       }
     }
 })

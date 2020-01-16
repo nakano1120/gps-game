@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Taskracing Run</title>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="なっかのう" />
+    <meta name="twitter:title" content="Taskracing RUN" />
+    <meta name="twitter:description" content="ランニングをして、コンピュータとレースをしよう！" />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/nakano1120/taskracing_run/master/icon-256.png" />
+    <meta name="twitter:url" content="https://nakano1120.github.io/taskracing_run/index.html" />
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <style>
       body{
@@ -80,9 +86,10 @@
       TaskRacing Run
     </div>
     <div id='app'>
+      <a href="#" onclick="this.botan()" style="display:none;" id="tweet">ツイートする</a>
       <form id="form1">
         距離:<input type="number" id="todo" value="100">m
-        目標時間:<input type="number" id="time" value="1">分<input type="number" id="sec" value="0">秒
+        目標:<input type="number" id="time" value="1">分<input type="number" id="sec" value="0">秒
         <input type="button" value="開始" v-on:click="timer">
       </form>
       <h1 id="todoname"> {{todoname}} </h1>

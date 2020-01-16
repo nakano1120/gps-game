@@ -84,7 +84,7 @@ var taro = new Vue({
           alert("時間が不正です")
           return
         }
-        if(document.getElementById("todo").value < 0 || document.getElementById("todo").value > 1000000){
+        if(document.getElementById("todo").value < 1 || document.getElementById("todo").value > 999999){
           alert("距離が不正です")
           return
         }

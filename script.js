@@ -147,12 +147,12 @@ var taro = new Vue({
             document.getElementById("tweet").style.display = "inline-block";
         }
       },
-      openTwitter:function(text,url,hash,account){
-        let turl = "https://twitter.com/intent/tweet?text="+text+"&url="+url+"&hashtags="+hash+"&via="+account;
+      openTwitter:function(text,url,hash){
+        let turl = "https://twitter.com/intent/tweet?text="+text+"&url="+url+"&hashtags="+hash;
         window.open(turl,'_blank');
       },
       botan:function(){
-        this.openTwitter("Taskracing RUN "+goal+"m走大会で "+hour+"時間"+min2+"分"+secsec+"秒の成績を記録しました！","https://nakano1120.github.io/taskracing_run/index.html","TaskRacing RUN","");    
+        this.openTwitter("Taskracing RUN "+goal+"m走大会で "+hour+"時間"+min2+"分"+secsec+"秒の成績を記録しました！","https://nakano1120.github.io/taskracing_run/index.html","TaskRacing RUN");    
       }
     }
 })

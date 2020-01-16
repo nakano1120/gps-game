@@ -80,7 +80,7 @@ var taro = new Vue({
         if(document.getElementById("time").value < 1 || document.getElementById("sec").value < 0 || document.getElementById("time").value > 999 || document.getElementById("sec").value > 59){
           alert("時間が不正です")
           return
-        }else if(document.getElementById("todo".value<0) || document.getElementById("todo".value<1000000)){
+        }else if(document.getElementById("todo").value < 0 || document.getElementById("todo").value > 1000000){
           alert("距離が不正です")
           return
         }
@@ -138,7 +138,7 @@ var taro = new Vue({
               document.getElementById("pb"+l).style.width = "100%"
             }
         }
-        if(player[0].par > goal){
+        if(player[0].par >= goal){
             clearInterval(this.stationtimer);
             alert("終了です。お疲れ様でした。")
             document.getElementById("tweet").style.display = "inline-block";

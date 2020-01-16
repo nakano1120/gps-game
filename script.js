@@ -83,7 +83,8 @@ var taro = new Vue({
         if(document.getElementById("time").value < 1 || document.getElementById("sec").value < 0 || document.getElementById("time").value > 999 || document.getElementById("sec").value > 59){
           alert("時間が不正です")
           return
-        }else if(document.getElementById("todo").value < 0 || document.getElementById("todo").value > 1000000){
+        }
+        if(document.getElementById("todo").value < 0 || document.getElementById("todo").value > 1000000){
           alert("距離が不正です")
           return
         }
@@ -107,9 +108,9 @@ var taro = new Vue({
         let point = Math.floor(diftime / 100);
         let point2 = Math.floor(point % 10);
         let sec = Math.floor(diftime / 1000);
-        let secsec = Math.floor(sec % 60);
+        secsec = Math.floor(sec % 60);
         let min = Math.floor(sec / 60);
-        minmin = Math.floor(min % 60);
+        let minmin = Math.floor(min % 60);
         hour = Math.floor(min / 60);
         secsec = this.addZero(secsec);
         min2 = this.addZero(minmin);

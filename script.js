@@ -43,7 +43,12 @@ var taro = new Vue({
       notusetimer:null,
       address:[],
       query:"",
-      notusetime:0
+      notusetime:0,
+      headers: { 
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Headers': '*'
+      }
     },
     methods:{
       distance: function(lat1,lng1,lat2,lng2) {
@@ -183,15 +188,9 @@ var taro = new Vue({
       },
       getapi:function(la,lo){
         axios
-          .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, {
-            headers: { 
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Methods': '*',
-              'Access-Control-Allow-Headers': '*'
-            },
-            data: {} //←これ！！！
-          })
-          .then(response => (this.address = response.result))
+          .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, this.headers)
+          .then(response => (
+            this.address = response.result))
         console.log(this.address)
         if(first==1){
           if(this.address.local != null){

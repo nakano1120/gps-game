@@ -11,6 +11,9 @@ let hour = 0
 let min2 = 0
 let GPSlati=[]
 let GPSlong=[]
+let plusdis = 0
+let address = []
+let first = 0
 let player=[
   {id:"1",name:"<span class='red'>あなた大</span>",target:0,par:0},
   {id:"2",name:"体操大",target:0,par:0},
@@ -36,7 +39,9 @@ var taro = new Vue({
       parsent8:0,
       todoname:"",
       nowtime:"00:00:00",
-      stationtimer:null
+      stationtimer:null,
+      address:[],
+      query:""
     },
     methods:{
       distance: function(lat1,lng1,lat2,lng2) {
@@ -48,7 +53,7 @@ var taro = new Vue({
       },
       plusdistance: function(){
         this.getposition();
-        var plusdis = Math.floor(this.distance(lati1,long1,latinow,longnow) * 1000)
+        plusdis = Math.floor(this.distance(lati1,long1,latinow,longnow) * 1000)
         console.log(lati1+","+long1+","+latinow+","+longnow)
         if(lati1 == latinow && long1 == longnow){
           plusdis = 0;
@@ -116,6 +121,9 @@ var taro = new Vue({
         min2 = this.addZero(minmin);
         hour = this.addZero(hour);
         this.nowtime=""+hour+":"+min2+":"+secsec;
+        if(parseInt(Math.floor(sec % 60) % 10) == 0){
+          this.getapi(latinow,longnow)
+        }
         for( let i=1 ; i<8 ; i++){ 
             player[i].target += (Math.floor( Math.random() * 1000 ) - 500);
             player[i].par = Math.floor((Math.floor((diftime / player[i].target)* 10000) / 100) * (goal/100))
@@ -154,7 +162,7 @@ var taro = new Vue({
         window.open(turl,'_blank');
       },
       botan:function(){
-        this.openTwitter("Taskracing RUN "+goal+"m走大会で "+hour+"時間"+min2+"分"+secsec+"秒の成績を記録しました！","https://nakano1120.github.io/taskracing_run/index.html","TaskRacing RUN");    
+        this.openTwitter("Taskracing RUN "+goal+"m走大会で"+this.nowtime+"の成績を記録しました！","https://nakano1120.github.io/taskracing_run/index.html","TaskRacing RUN");    
       },
       stoptimer:function(){
         clearInterval(this.stationtimer);
@@ -166,6 +174,24 @@ var taro = new Vue({
         this.stationtimer = setInterval(this.timermain.bind(this),1000);
         document.getElementById("sto").style.display="inline"
         document.getElementById("res").style.display="none"
+      },
+      getapi:function(la,lo){
+        axios({
+          method: 'post',
+          url: 'http://www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo,
+          data: {
+              query: this.query,
+          },
+        }).then(response => (this.address = response.result))
+        console.log(this.address)
+        if(first==1){
+          if(this.address.local != null){
+            this.todoname=this.address.prefecture.pname+this.address.municipality.mname+this.address.local.section
+          }else{
+            this.todoname=this.address.prefecture.pname+this.address.municipality.mname
+          }
+        }
+        first==1
       }
     }
 })

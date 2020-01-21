@@ -158,7 +158,7 @@ var taro = new Vue({
         }
       },
       openTwitter:function(text,url,hash){
-        let turl = "https://twitter.com/intent/tweet?text="+text+"&url="+url+"&hashtags="+hash;
+        let turl = "//twitter.com/intent/tweet?text="+text+"&url="+url+"&hashtags="+hash;
         window.open(turl,'_blank');
       },
       botan:function(){

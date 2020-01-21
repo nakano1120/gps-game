@@ -201,7 +201,7 @@ var taro = new Vue({
             this.todoname=this.address.getElementsByTagName('pname').innerText+this.address.getElementsByTagName('mname').innerText
           }
         }
-        first==1
+        first=1
       }
     }
 })

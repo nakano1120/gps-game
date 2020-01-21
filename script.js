@@ -196,7 +196,7 @@ var taro = new Vue({
         if(first==1){
           console.log(xml)
           if(xml.match(/<local>*<\/local>/) != null){
-            this.todoname=xml.match(/<pname>*<\/pname>/).replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')+xml.match(/<mname>*<\/mname>/).replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')+.match(/<section>*<\/section>/).replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
+            this.todoname=xml.match(/<pname>*<\/pname>/).replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')+xml.match(/<mname>*<\/mname>/).replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')+xml.match(/<section>*<\/section>/).replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
           }else{
             this.todoname=xml.match(/<pname>*<\/pname>/).replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')+xml.match(/<mname>*<\/mname>/).replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
           }

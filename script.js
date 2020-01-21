@@ -16,6 +16,7 @@ let plusdis = 0
 let first = 0
 let xml=""
 let nowpoint = 1
+let countpoint = 0
 let player=[
   {id:"1",name:"<span class='red'>あなた大</span>",target:0,par:0},
   {id:"2",name:"体操大",target:0,par:0},
@@ -76,6 +77,7 @@ var taro = new Vue({
       getposition: function(){
         navigator.geolocation.getCurrentPosition(
           function( position ){
+              countpoint++
               if(lati1 == 0 && long1 == 0 ){
                 lati1 = position.coords.latitude;
                 long1 = position.coords.longitude;
@@ -83,7 +85,7 @@ var taro = new Vue({
                 lati1 = latinow;
                 long1 = longnow;
               }
-              latinow = position.coords.latitude;
+              latinow = position.coords.latitude+0.0005*countpoint;
               longnow = position.coords.longitude;
 
           }
@@ -205,11 +207,9 @@ var taro = new Vue({
         axios
           .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, this.headers)
           .then(response => (xml = response.data))
-          console.log(xml)
         if(first==1){
           if(xml.match(/<local.*local>/) != ""){
             let pref=String(xml.match(/<pname.*pname>/))
-            console.log(pref)
             pref=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
             let city=String(xml.match(/<mname.*mname>/))
             city=city.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
@@ -218,7 +218,6 @@ var taro = new Vue({
             this.todoname=pref+city+sect
           }else{
             let pref=String(xml.match(/<pname.*pname>/))
-            console.log(pref)
             pref=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
             let city=String(xml.match(/<mname.*mname>/))
             city=city.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')

@@ -77,7 +77,6 @@ var taro = new Vue({
       getposition: function(){
         navigator.geolocation.getCurrentPosition(
           function( position ){
-              countpoint++
               if(lati1 == 0 && long1 == 0 ){
                 lati1 = position.coords.latitude;
                 long1 = position.coords.longitude;
@@ -85,7 +84,7 @@ var taro = new Vue({
                 lati1 = latinow;
                 long1 = longnow;
               }
-              latinow = position.coords.latitude+0.0005*countpoint;
+              latinow = position.coords.latitude
               longnow = position.coords.longitude;
 
           }

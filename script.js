@@ -192,12 +192,12 @@ var taro = new Vue({
         axios
           .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, this.headers)
           .then(response => (this.address = response))
-        console.log(this.address)
+        console.log(this.address.getElementsByTagName('pname').innerText)
         if(first==1){
-          if(this.address.local != null){
-            this.todoname=this.address.prefecture.pname+this.address.municipality.mname+this.address.local.section
+          if(this.address.getElementsByTagName('local') != null){
+            this.todoname=this.address.getElementsByTagName('pname').innerText+this.address.getElementsByTagName('mname').innerText+this.address.getElementsByTagName('section').innerText
           }else{
-            this.todoname=this.address.prefecture.pname+this.address.municipality.mname
+            this.todoname=this.address.getElementsByTagName('pname').innerText+this.address.getElementsByTagName('mname').innerText
           }
         }
         first==1

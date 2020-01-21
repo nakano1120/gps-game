@@ -130,7 +130,7 @@ var taro = new Vue({
         min2 = this.addZero(minmin);
         hour = this.addZero(hour);
         this.nowtime=""+hour+":"+min2+":"+secsec;
-        if(parseInt(Math.floor(sec % 60) % 10) == 0 || secsec == 0){
+        if(parseInt(Math.floor(sec % 60) % 6) == 0){
           this.getapi(latinow,longnow)
         }
         for( let i=1 ; i<8 ; i++){ 

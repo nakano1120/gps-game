@@ -13,7 +13,7 @@ let GPSlati=[]
 let GPSlong=[]
 let plusdis = 0
 let first = 0
-let xml=[]
+let xml=""
 let player=[
   {id:"1",name:"<span class='red'>あなた大</span>",target:0,par:0},
   {id:"2",name:"体操大",target:0,par:0},

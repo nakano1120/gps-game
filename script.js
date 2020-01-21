@@ -197,13 +197,18 @@ var taro = new Vue({
           console.log(xml)
           if(xml.match(/<local>*<\/local>/) != null){
             let pref=xml.match(/<pname>*<\/pname>/)
+            pref=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
             let city=xml.match(/<mname>*<\/mname>/)
+            city=city.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
             let sect=xml.match(/<section>*<\/section>/)
-            this.todoname=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')+city.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')+sect.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
+            sect=sect.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
+            this.todoname=pref+city+sect
           }else{
             let pref=xml.match(/<pname>*<\/pname>/)
+            pref=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
             let city=xml.match(/<mname>*<\/mname>/)
-            this.todoname=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')+city.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
+            city=city.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
+            this.todoname=pref+city
           }
         }
         first=1

@@ -40,8 +40,10 @@ var taro = new Vue({
       todoname:"",
       nowtime:"00:00:00",
       stationtimer:null,
+      notusetimer:null,
       address:[],
-      query:""
+      query:"",
+      notusetime:0
     },
     methods:{
       distance: function(lat1,lng1,lat2,lng2) {
@@ -109,7 +111,7 @@ var taro = new Vue({
         this.plusdistance()
         player[0].par = this.alldis
         let now = new Date();
-        let diftime = (now.getTime() - start.getTime());
+        let diftime = (now.getTime() - start.getTime())-this.notusetime * 1000;
         let point = Math.floor(diftime / 100);
         let point2 = Math.floor(point % 10);
         let sec = Math.floor(diftime / 1000);
@@ -166,11 +168,15 @@ var taro = new Vue({
       },
       stoptimer:function(){
         clearInterval(this.stationtimer);
+        this.notusetimer = setInterval(function(){
+            this.notusetime++
+        }.bind(this), 1000);
         this.nowtime="一時停止中"
         document.getElementById("sto").style.display="none"
         document.getElementById("res").style.display="inline"
       },
       restarttimer:function(){
+        clearInterval(this.notusetimer)
         this.stationtimer = setInterval(this.timermain.bind(this),1000);
         document.getElementById("sto").style.display="inline"
         document.getElementById("res").style.display="none"

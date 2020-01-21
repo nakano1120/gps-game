@@ -137,7 +137,7 @@ var taro = new Vue({
         hour = this.addZero(hour);
         this.nowtime=""+hour+":"+min2+":"+sec2;
         if(this.alldis > 500 * nowpoint){
-          const uttr = new SpeechSynthesisUtterance(String(500*nowpoint)+"メートル突破、現在地は"+todoname+"、タイムは"+hour+"時間"+minmin+"分"+secsec+"秒")
+          const uttr = new SpeechSynthesisUtterance(String(500*nowpoint)+"メートル突破、現在地は"+this.todoname+"、タイムは"+hour+"時間"+minmin+"分"+secsec+"秒")
           uttr.lang = "ja-JP"
           speechSynthesis.speak(uttr)
           nowpoint++

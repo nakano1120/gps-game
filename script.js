@@ -195,10 +195,10 @@ var taro = new Vue({
           .then(response => (xml = response.data))
         if(first==1){
           console.log(xml)
-          if(this.address.getElementsByTagName('local') != null){
-            this.todoname=this.address.getElementsByTagName('pname').innerText+this.address.getElementsByTagName('mname').innerText+this.address.getElementsByTagName('section').innerText
+          if(xml.getElementsByTagName('local') != null){
+            this.todoname=xml.getElementsByTagName('pname')[0]+xml.getElementsByTagName('mname')[0]+xml.getElementsByTagName('section')[0]
           }else{
-            this.todoname=this.address.getElementsByTagName('pname').innerText+this.address.getElementsByTagName('mname').innerText
+            this.todoname=xml.getElementsByTagName('pname')[0]+xml.getElementsByTagName('mname')[0]
           }
         }
         first=1

@@ -191,8 +191,7 @@ var taro = new Vue({
       getapi:function(la,lo){
         axios
           .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, this.headers)
-          .then(response => (
-            this.address = response))
+          .then(response => (this.address = response))
         console.log(this.address)
         if(first==1){
           if(this.address.local != null){

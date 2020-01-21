@@ -182,13 +182,12 @@ var taro = new Vue({
         document.getElementById("res").style.display="none"
       },
       getapi:function(la,lo){
-        axios({
-          method: 'get',
-          url: '//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo,
-          data: {
-              query: this.query,
-          },
-        }).then(response => (this.address = response.result))
+        axios
+          .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, {
+            headers: { 'Access-Control-Allow-Origin': '*', },
+            data: {} //←これ！！！
+          })
+          .then(response => (this.address = response.result))
         console.log(this.address)
         if(first==1){
           if(this.address.local != null){

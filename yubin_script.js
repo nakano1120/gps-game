@@ -1,8 +1,7 @@
 let headers={ 
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': '*',
-  'Access-Control-Allow-Headers': '*',
-  "Access-Control-Allow-Headers":["X-Requested-With","Origin", "X-Csrftoken", "Content-Type", "Accept"]
+  'Access-Control-Allow-Headers': '*'
 }
 var taro = new Vue({
     el: "#app",

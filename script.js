@@ -118,7 +118,7 @@ var taro = new Vue({
         this.plusdistance()
         player[0].par = this.alldis
         let now = new Date();
-        let diftime = (now.getTime() - start.getTime())-this.notusetime * 1000;
+        let diftime = (now.getTime() - start.getTime()) - this.notusetime * 1000;
         let point = Math.floor(diftime / 100);
         let point2 = Math.floor(point % 10);
         let sec = Math.floor(diftime / 1000);
@@ -174,6 +174,7 @@ var taro = new Vue({
         this.openTwitter("Taskracing RUN "+goal+"m走大会で"+this.nowtime+"の成績を記録しました！","https://nakano1120.github.io/taskracing_run/index.html","TaskRacing RUN");    
       },
       stoptimer:function(){
+        this.notusetime++
         clearInterval(this.stationtimer);
         this.notusetimer = setInterval(function(){
             this.notusetime++
@@ -192,8 +193,8 @@ var taro = new Vue({
         axios
           .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, this.headers)
           .then(response => (this.address = response.data))
-        console.log(this.address.getElementsByTagName('pname').innerText)
         if(first==1){
+          console.log(this.address)
           if(this.address.getElementsByTagName('local') != null){
             this.todoname=this.address.getElementsByTagName('pname').innerText+this.address.getElementsByTagName('mname').innerText+this.address.getElementsByTagName('section').innerText
           }else{

@@ -196,17 +196,18 @@ var taro = new Vue({
           console.log(xml)
         if(first==1){
           if(xml.match(/<local>*<\/local>/) != null){
-            let pref=xml.match(/<pname>*<\/pname>/)
+            let pref=String(xml.match(/<pname>*<\/pname>/))
+            console.log(pref)
             pref=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
-            let city=xml.match(/<mname>*<\/mname>/)
+            let city=String(xml.match(/<mname>*<\/mname>/))
             city=city.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
-            let sect=xml.match(/<section>*<\/section>/)
+            let sect=String(xml.match(/<section>*<\/section>/))
             sect=sect.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
             this.todoname=pref+city+sect
           }else{
-            let pref=xml.match(/<pname>*<\/pname>/)
+            let pref=String(xml.match(/<pname>*<\/pname>/))
             pref=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
-            let city=xml.match(/<mname>*<\/mname>/)
+            let city=String(xml.match(/<mname>*<\/mname>/))
             city=city.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')
             this.todoname=pref+city
           }

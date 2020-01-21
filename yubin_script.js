@@ -16,6 +16,7 @@ var taro = new Vue({
           axios
             .get('//zip-cloud.appspot.com/api/search?zipcode='+this.postnum, headers)
             .then(response => (address = response.results))
+            console.log(address)
         }
       }
     }

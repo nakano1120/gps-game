@@ -7,6 +7,7 @@ let goal = 0
 let time = 0
 let count = 0
 let secsec = 0
+let sec2= 0
 let hour = 0
 let min2 = 0
 let GPSlati=[]
@@ -14,6 +15,7 @@ let GPSlong=[]
 let plusdis = 0
 let first = 0
 let xml=""
+let nowpoint = 1
 let player=[
   {id:"1",name:"<span class='red'>あなた大</span>",target:0,par:0},
   {id:"2",name:"体操大",target:0,par:0},
@@ -38,7 +40,7 @@ var taro = new Vue({
         parsent6:0,
         parsent7:0,
         parsent8:0,
-        todoname:"",
+        todoname:"位置情報なし",
         nowtime:"00:00:00",
         stationtimer:null,
         notusetimer:null,
@@ -69,7 +71,7 @@ var taro = new Vue({
         }else if(plusdis == NaN){
           plusdis = 0;
         }
-        this.alldis+=plusdis;
+        this.alldis+=plusdis + 10;
       },
       getposition: function(){
         navigator.geolocation.getCurrentPosition(
@@ -104,10 +106,13 @@ var taro = new Vue({
         }
         start = new Date();
         alert("出発します。")
+        goal = document.getElementById("todo").value
+        const uttr = new SpeechSynthesisUtterance(goal+"m走を開始します。目標時間は"+document.getElementById("time").value+"分"+document.getElementById("sec").value+"秒")
+        uttr.lang = "ja-JP"
+        speechSynthesis.speak(uttr)
         document.getElementById("sto").style.display="inline"
         nowstation = 0
         document.getElementById("form1").style.display = "none";
-        goal = document.getElementById("todo").value
         departuretime = parseInt(document.getElementById("time").value * 60) + parseInt(document.getElementById("sec").value)
         for( let i=1 ; i<8 ; i++){
           player[i].target = ((parseInt(departuretime))+ Math.floor( Math.random() * parseInt(departuretime/2) ) - parseInt(departuretime/4)) * 1000
@@ -117,6 +122,7 @@ var taro = new Vue({
       timermain: function(){
         this.plusdistance()
         player[0].par = this.alldis
+
         let now = new Date();
         let diftime = (now.getTime() - start.getTime()) - this.notusetime * 1000;
         let point = Math.floor(diftime / 100);
@@ -126,10 +132,16 @@ var taro = new Vue({
         let min = Math.floor(sec / 60);
         let minmin = Math.floor(min % 60);
         hour = Math.floor(min / 60);
-        secsec = this.addZero(secsec);
+        sec2 = this.addZero(secsec);
         min2 = this.addZero(minmin);
         hour = this.addZero(hour);
-        this.nowtime=""+hour+":"+min2+":"+secsec;
+        this.nowtime=""+hour+":"+min2+":"+sec2;
+        if(this.alldis > 500 * nowpoint){
+          const uttr = new SpeechSynthesisUtterance(String(500*nowpoint)+"メートル突破、現在地は"+todoname+"、タイムは"+hour+"時間"+minmin+"分"+secsec+"秒")
+          uttr.lang = "ja-JP"
+          speechSynthesis.speak(uttr)
+          nowpoint++
+        }
         if(parseInt(Math.floor(sec % 60) % 6) == 0){
           this.getapi(latinow,longnow)
         }

@@ -71,7 +71,7 @@ var taro = new Vue({
         }else if(plusdis == NaN){
           plusdis = 0;
         }
-        this.alldis+=plusdis + 10;
+        this.alldis+=plusdis;
       },
       getposition: function(){
         navigator.geolocation.getCurrentPosition(

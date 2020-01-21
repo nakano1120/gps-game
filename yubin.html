@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一問一答太郎</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      body{
+          position:relative;
+          text-align:center;
+          background-color:#999999;
+      }
+
+      #app{
+          width: 80%;	/* コンテンツの横幅を指定する */
+          margin:0 auto;
+          background-color:#ffffee;
+          border-radius:3vw;
+      }
+
+      .header{
+          width:80%;
+          margin:0 auto;
+          background-color:#ffffee;
+          border-radius:3vw;
+      }
+      #quizform{
+          display: none;
+      }
+      .red{
+          color:#ff0000;
+      }
+    </style>
+</head>
+<body>
+    <div class="header"><h1>郵便番号</h1></div><br>
+    <div id='app'>
+      7桁の郵便番号を入力してください。※ハイフン(-)は入れません
+      <input type="number" v-model="postnum"><input type="button" @click="getaddress">
+      <h2 class="red">〒{{ postnum }}<br>住所：{{address[0].address1}}{{address[0].address2}}{{address[0].address3}}</h2>
+    </div>
+    <footer>APIの出典:郵便番号データ配信サービス　ZipCloud(<a href="http://zipcloud.ibsnet.co.jp/">http://zipcloud.ibsnet.co.jp/</a>)</footer>
+    <script src="yubin_script.js"></script>
+</body>
+</html>

@@ -23,7 +23,7 @@ var taro = new Vue({
       getaddress:function(){
         if(this.postnum>1000000 && this.postnum<9999999){
           axios
-            .get('https://zip-cloud.appspot.com/api/search?zipcode='+this.postnum, this.headers)
+            .get('//zip-cloud.appspot.com/api/search?zipcode='+this.postnum, {headers : this.headers})
             .then(response => (this.address = response.results))
         }
       }

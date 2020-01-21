@@ -195,7 +195,7 @@ var taro = new Vue({
           .then(response => (xml = response.data))
           console.log(xml)
         if(first==1){
-          if(xml.match(/<local.*local>/) != null){
+          if(xml.match(/<local.*local>/) != ""){
             let pref=String(xml.match(/<pname.*pname>/))
             console.log(pref)
             pref=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')

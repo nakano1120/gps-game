@@ -193,8 +193,8 @@ var taro = new Vue({
         axios
           .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, this.headers)
           .then(response => (xml = response.data))
-        if(first==1){
           console.log(xml)
+        if(first==1){
           if(xml.match(/<local>*<\/local>/) != null){
             let pref=xml.match(/<pname>*<\/pname>/)
             pref=pref.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'')

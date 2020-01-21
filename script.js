@@ -12,8 +12,8 @@ let min2 = 0
 let GPSlati=[]
 let GPSlong=[]
 let plusdis = 0
-let address = []
 let first = 0
+let xml=[]
 let player=[
   {id:"1",name:"<span class='red'>あなた大</span>",target:0,par:0},
   {id:"2",name:"体操大",target:0,par:0},
@@ -130,7 +130,7 @@ var taro = new Vue({
         min2 = this.addZero(minmin);
         hour = this.addZero(hour);
         this.nowtime=""+hour+":"+min2+":"+secsec;
-        if(parseInt(Math.floor(sec % 60) % 10) == 0){
+        if(parseInt(Math.floor(sec % 60) % 10) == 0 || secsec == 0){
           this.getapi(latinow,longnow)
         }
         for( let i=1 ; i<8 ; i++){ 
@@ -192,9 +192,9 @@ var taro = new Vue({
       getapi:function(la,lo){
         axios
           .get('//www.finds.jp/ws/rgeocode.php?lat='+la+'&lon='+lo, this.headers)
-          .then(response => (this.address = response.data))
+          .then(response => (xml = response.data))
         if(first==1){
-          console.log(this.address)
+          console.log(xml)
           if(this.address.getElementsByTagName('local') != null){
             this.todoname=this.address.getElementsByTagName('pname').innerText+this.address.getElementsByTagName('mname').innerText+this.address.getElementsByTagName('section').innerText
           }else{

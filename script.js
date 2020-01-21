@@ -26,28 +26,30 @@ let player=[
 ]
 var taro = new Vue({
     el: "#app",
-    data: {
-      timerOn: false,
-      alldis:0,
-      parsent1:0,
-      parsent2:0,
-      parsent3:0,
-      parsent4:0,
-      parsent5:0,
-      parsent6:0,
-      parsent7:0,
-      parsent8:0,
-      todoname:"",
-      nowtime:"00:00:00",
-      stationtimer:null,
-      notusetimer:null,
-      address:[],
-      query:"",
-      notusetime:0,
-      headers: { 
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': '*',
-        'Access-Control-Allow-Headers': '*'
+    data() {
+      return {
+        timerOn: false,
+        alldis:0,
+        parsent1:0,
+        parsent2:0,
+        parsent3:0,
+        parsent4:0,
+        parsent5:0,
+        parsent6:0,
+        parsent7:0,
+        parsent8:0,
+        todoname:"",
+        nowtime:"00:00:00",
+        stationtimer:null,
+        notusetimer:null,
+        address:[],
+        query:"",
+        notusetime:0,
+        headers: { 
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': '*',
+          'Access-Control-Allow-Headers': '*'
+        }
       }
     },
     methods:{

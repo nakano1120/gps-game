@@ -3,15 +3,7 @@ var taro = new Vue({
     el: "#app",
     data: {
       postnum:"",
-      address:[
-        {
-          results:{
-            address1:"",
-            address2:"",
-            address3:""
-          }
-        }
-      ],
+      address:[],
       query:"",
       headers: { 
         'Access-Control-Allow-Origin': '*',
@@ -24,7 +16,7 @@ var taro = new Vue({
         if(this.postnum>1000000 && this.postnum<9999999){
           axios
             .get('//zip-cloud.appspot.com/api/search?zipcode='+this.postnum, {headers : this.headers})
-            .then(response => (this.address = response.results))
+            .then(response => (address = response.results))
         }
       }
     }

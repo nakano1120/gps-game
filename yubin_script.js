@@ -3,13 +3,18 @@ var taro = new Vue({
     data: {
       postnum:"",
       address:[],
-      query:""
+      query:"",
+      headers: { 
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*',
+        'Access-Control-Allow-Headers': '*'
+      }
     },
     methods:{
       getaddress:function(){
         if(this.postnum>1000000 && this.postnum<9999999){
           axios
-            .get('https://zip-cloud.appspot.com/api/search?zipcode='+String(this.postnum),{target: text})
+            .get('https://zip-cloud.appspot.com/api/search?zipcode='+String(this.postnum), this.headers)
             .then(response => (this.address = response.results))
             console.log(this.address)
         }

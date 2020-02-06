@@ -8,7 +8,6 @@ var taro = new Vue({
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': '*',
         'Access-Control-Allow-Headers': '*',
-        'Access-Control-Expose-Headers': '*',
         "Content-Type": "application/json"
       }
     },

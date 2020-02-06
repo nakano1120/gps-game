@@ -5,7 +5,7 @@ var taro = new Vue({
       address:{},
       query:"",
       headers: { 
-        'Access-Control-Allow-Origin': 'https://zip-cloud.appspot.com',
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': '*',
         'Access-Control-Allow-Headers': '*',
         "Content-Type": "application/json"

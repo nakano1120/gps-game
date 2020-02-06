@@ -14,10 +14,11 @@ var taro = new Vue({
       getaddress:function(){
         if(this.postnum>1000000 && this.postnum<9999999){
           axios
-            .get('https://zip-cloud.appspot.com/api/search?zipcode='+String(this.postnum), this.headers)
+            .get('https://zip-cloud.appspot.com/api/search?zipcode=7830060', this.headers)
             .then(response => (this.address = response.results))
             console.log(this.address)
         }
       }
     }
 })
+///'https://zip-cloud.appspot.com/api/search?zipcode='+String(this.postnum)
